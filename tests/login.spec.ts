@@ -4,6 +4,17 @@ test.beforeEach(async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
 });
 
+const acceptedUsernames = [
+'standard_user', 
+'locked_out_user',
+'problem_user',
+'performance_glitch_user',
+'error_user',
+'visual_user',
+] 
+
+const acceptedPassword = 'secret_sauce';
+
 test('has title', async ({ page }) => {
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Swag Labs/);
@@ -28,4 +39,4 @@ test('Login button with correct credentials', async ({ page }) => {
   await page.getByRole('button', { name: 'Login' }).click();
 });
 
-//verify upload
+
