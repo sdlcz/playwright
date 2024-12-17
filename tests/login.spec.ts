@@ -31,12 +31,10 @@ test('Login button with incorrect credentials', async ({ page }) => {
 });
 
 test('Login button with correct credentials', async ({ page }) => { 
-
-  await page.getByPlaceholder('Username').fill('standard_user');
-
-  await page.getByPlaceholder('Password').fill('secret_sauce');
-  
+  await page.getByPlaceholder('Username').fill(acceptedUsernames[0]);
+  await page.getByPlaceholder('Password').fill(acceptedPassword);
   await page.getByRole('button', { name: 'Login' }).click();
+  
 });
 
 
