@@ -34,6 +34,9 @@ test('Login button with correct credentials', async ({ page }) => {
   await page.getByPlaceholder('Username').fill(acceptedUsernames[0]);
   await page.getByPlaceholder('Password').fill(acceptedPassword);
   await page.getByRole('button', { name: 'Login' }).click();
+
+  const pageTitle = page.locator('//*[@id="header_container"]/div[2]/span');
+  await expect(pageTitle).toBeVisible();
 });
 
 
