@@ -25,7 +25,7 @@ test('Login button with incorrect credentials', async ({ page }) => {
   await page.getByPlaceholder('Password').fill('testpassword');
   await page.getByRole('button', { name: 'Login' }).click();
 
-  const invalidCredentialsError = page.locator('');
+  const invalidCredentialsError = page.locator('//*[@id="login_button_container"]/div/form/div[3]/h3');
   await expect(invalidCredentialsError).toBeVisible();
   await expect(invalidCredentialsError).toContainText('Epic sadface: Username and password do not match any user in this service');
 });
@@ -34,7 +34,6 @@ test('Login button with correct credentials', async ({ page }) => {
   await page.getByPlaceholder('Username').fill(acceptedUsernames[0]);
   await page.getByPlaceholder('Password').fill(acceptedPassword);
   await page.getByRole('button', { name: 'Login' }).click();
-  
 });
 
 
