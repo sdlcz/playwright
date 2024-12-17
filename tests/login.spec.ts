@@ -21,13 +21,13 @@ test('has title', async ({ page }) => {
 });
 
 test('Login button with incorrect credentials', async ({ page }) => {
-
   await page.getByPlaceholder('Username').fill('John');
-
   await page.getByPlaceholder('Password').fill('testpassword');
-  
   await page.getByRole('button', { name: 'Login' }).click();
 
+  const invalidCredentialsError = page.locator('');
+  await expect(invalidCredentialsError).toBeVisible();
+  await expect(invalidCredentialsError).toContainText('Epic sadface: Username and password do not match any user in this service');
 });
 
 test('Login button with correct credentials', async ({ page }) => { 
