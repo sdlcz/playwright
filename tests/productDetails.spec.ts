@@ -15,6 +15,10 @@ test('View product details', async ({ page }) => {
 
   const productTitle = page.locator('//*[@id="inventory_item_container"]/div/div/div[2]/div[1]');
   await expect(productTitle).toBeVisible();
+  const price = page.locator('//*[@id="inventory_item_container"]/div/div/div[2]/div[3]');
+  await expect(price).toBeVisible();
+
+  await page.locator('//*[@id="add-to-cart"]').click();
 });
 
 
