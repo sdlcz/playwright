@@ -19,6 +19,9 @@ test('View product details', async ({ page }) => {
   await expect(price).toBeVisible();
 
   await page.locator('//*[@id="add-to-cart"]').click();
+  await expect(page.locator('//*[@id="shopping_cart_container"]/a')).toHaveValue('1');
+
+
 });
 
 
