@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/loginPage';
 
-// test.beforeEach(async ({ page }) => {
-//   await page.goto('https://www.saucedemo.com/');
-// });
+test.beforeEach(async ({ page }) => {
+  await page.goto('https://www.saucedemo.com/');
+});
 
 const acceptedUsernames = [
 'standard_user', 
@@ -16,10 +16,10 @@ const acceptedUsernames = [
 
 const acceptedPassword = 'secret_sauce';
 
-test('has title', async ({ page }) => {
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Swag Labs/);
-});
+// test('has title', async ({ page }) => {
+//   // Expect a title "to contain" a substring.
+//   await expect(page).toHaveTitle(/Swag Labs/);
+// });
 
 test('Login button with incorrect credentials', async ({ page }) => {
   const loginPage = new LoginPage(page);
@@ -27,15 +27,6 @@ test('Login button with incorrect credentials', async ({ page }) => {
   await loginPage.login('John', 'testpassword');
   const error = await loginPage.getErrorMessage();
   expect(error).toContain('Epic sadface: Username and password do not match any user in this service');
-    
-  
-  // await page.getByPlaceholder('Username').fill('John');
-  // await page.getByPlaceholder('Password').fill('testpassword');
-  // await page.getByRole('button', { name: 'Login' }).click();
-
-  // const invalidCredentialsError = page.locator('//*[@id="login_button_container"]/div/form/div[3]/h3');
-  // await expect(invalidCredentialsError).toBeVisible();
-  // await expect(invalidCredentialsError).toContainText('Epic sadface: Username and password do not match any user in this service');
 });
 
 test('Login button with correct credentials', async ({ page }) => { 

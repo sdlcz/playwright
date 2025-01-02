@@ -1,11 +1,11 @@
 import { Page } from '@playwright/test';
 
 export class LoginPage {
-    private page: Page;
-    private usernameInput = 'Username';
-    private passwordInput = 'Password';
-    private loginButton = 'Login';
-    private errorMessage = 'Epic sadface: Username and password do not match any user in this service';
+     page: Page;
+     private usernameInput = '#user-name';
+     private passwordInput = '#password';
+     private loginButton = '#login-button';
+     private errorMessage = '[data-test="error"]';
 
     constructor(page: Page) {
         this.page = page;
