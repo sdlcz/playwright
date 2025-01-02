@@ -3,6 +3,7 @@ import { LoginPage } from '../pages/loginPage';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
+  await expect(page).toHaveTitle(/Swag Labs/);
 });
   
 const acceptedUsernames = [
@@ -15,9 +16,6 @@ const acceptedUsernames = [
 ] 
 
 const acceptedPassword = 'secret_sauce';
-test('has title', async ({ page }) => {
-  await expect(page).toHaveTitle(/Swag Labs/);
-});
 
 test('Login button with incorrect credentials', async ({ page }) => {
   const loginPage = new LoginPage(page);
