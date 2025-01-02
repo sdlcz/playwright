@@ -16,14 +16,13 @@ const acceptedUsernames = [
 
 const acceptedPassword = 'secret_sauce';
 
-// test('has title', async ({ page }) => {
-//   // Expect a title "to contain" a substring.
-//   await expect(page).toHaveTitle(/Swag Labs/);
-// });
+test('has title', async ({ page }) => {
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle(/Swag Labs/);
+});
 
 test('Login button with incorrect credentials', async ({ page }) => {
   const loginPage = new LoginPage(page);
-  await loginPage.goto();
   await loginPage.login('John', 'testpassword');
   const error = await loginPage.getErrorMessage();
   expect(error).toContain('Epic sadface: Username and password do not match any user in this service');
