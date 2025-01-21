@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
   await page.getByPlaceholder('Username').fill(acceptedUsername);
   await page.getByPlaceholder('Password').fill(acceptedPassword);
   await page.getByRole('button', { name: 'Login' }).click();
-
+  
 });
 
 test('View product details', async ({ page }) => {
