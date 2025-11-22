@@ -10,8 +10,10 @@ import { TodoAppHelpers } from './utils/TodoAppHelpers';
  * - UPPERCASE for constants
  * - No underscores in names
  * - Line length < 80 characters
+ * 
+ * REQUIRES REVIEW DUE TEST FLAKINESS & FAILURES
  */
-
+ 
 const TODO_ITEMS = [
   'buy some cheese',
   'feed the cat',
