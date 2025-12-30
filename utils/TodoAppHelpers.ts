@@ -30,10 +30,12 @@ export class TodoAppHelpers {
     page: Page,
     expectedCount: number
   ): Promise<void> {
-    await page.waitForFunction((expected: number) => {
-      const todos = JSON.parse(localStorage[this.STORAGE_KEY] || '[]');
+    const storageKey = this.STORAGE_KEY;
+    await page.waitForFunction((arg: any) => {
+      const [expected, key] = arg;
+      const todos = JSON.parse(localStorage[key] || '[]');
       return todos.length === expected;
-    }, expectedCount);
+    }, [expectedCount, storageKey]);
   }
 
   /**
@@ -45,12 +47,14 @@ export class TodoAppHelpers {
     page: Page,
     expectedCount: number
   ): Promise<void> {
-    await page.waitForFunction((expected: number) => {
-      const todos = JSON.parse(localStorage[this.STORAGE_KEY] || '[]');
+    const storageKey = this.STORAGE_KEY;
+    await page.waitForFunction((arg: any) => {
+      const [expected, key] = arg;
+      const todos = JSON.parse(localStorage[key] || '[]');
       return todos
         .filter((todo: any) => todo.completed)
         .length === expected;
-    }, expectedCount);
+    }, [expectedCount, storageKey]);
   }
 
   /**
@@ -62,12 +66,14 @@ export class TodoAppHelpers {
     page: Page,
     title: string
   ): Promise<void> {
-    await page.waitForFunction((searchTitle: string) => {
-      const todos = JSON.parse(localStorage[this.STORAGE_KEY] || '[]');
+    const storageKey = this.STORAGE_KEY;
+    await page.waitForFunction((arg: any) => {
+      const [searchTitle, key] = arg;
+      const todos = JSON.parse(localStorage[key] || '[]');
       return todos
         .map((todo: any) => todo.title)
         .includes(searchTitle);
-    }, title);
+    }, [title, storageKey]);
   }
 
   /**
@@ -75,8 +81,9 @@ export class TodoAppHelpers {
    * @param page - Playwright page object
    */
   static async clearAllTodos(page: Page): Promise<void> {
-    await page.evaluate(() => {
-      localStorage.removeItem(this.STORAGE_KEY);
-    });
+    const storageKey = this.STORAGE_KEY;
+    await page.evaluate((key: string) => {
+      localStorage.removeItem(key);
+    }, storageKey);
   }
 }
