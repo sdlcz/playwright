@@ -13,7 +13,7 @@ import { TodoAppHelpers } from './utils/TodoAppHelpers';
  * 
  * REQUIRES REVIEW DUE TEST FLAKINESS & FAILURES
  */
- 
+
 const TODO_ITEMS = [
   'buy some cheese',
   'feed the cat',
